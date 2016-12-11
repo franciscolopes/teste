@@ -108,7 +108,7 @@
                 font-size: 90px;
                 text-align: center;
                 /*border: 2px dashed #db5e3e;*/
-
+                background-image: url("imagens/carta_0.png");
                 border-radius: 10px;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
@@ -312,11 +312,11 @@
 
             function novoJogo() {
                 pararCronometro();
-
                 ligaCronometro();
                 document.getElementById("imgLateral").style.opacity = 0;
                 setTimeout(mostraImagemLateral, 20000);
                 setTimeout(mostraImagemPequena, 10000);
+                embaralharCartas();
             }
 
             function incio() {
@@ -416,6 +416,59 @@
             /*chama fantasma pequeno*/
 
 
+            /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
+            var g_sorteado;
+            var g_estadoImagem1;
+            var g_estadoImagem2;
+            function dado(limiteInf, limiteSup) {
+                return parseInt(Math.random() * (limiteSup - limiteInf) + limiteInf + 0.5);
+            }
+            function trocarCarta(posicao) {
+                document.getElementById("carta_" + (posicao + 1)).style.backgroundImage = "url('imagens/carta_" + vetCartasEmbaralhadas[posicao] + ".png')";
+
+                if (g_estadoImagem1 == null) {
+                    posicaoImg01 = posicao;
+                    g_estadoImagem1 = vetCartasEmbaralhadas[posicao];
+                } else {
+                    posicaoImg02 = posicao;
+                    g_estadoImagem2 = vetCartasEmbaralhadas[posicao];
+                }
+                if (g_estadoImagem1 != null && g_estadoImagem2 != null) {
+                    if (g_estadoImagem1 != g_estadoImagem2) {
+                        document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_0.png')";
+                        document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_0.png')";
+                        g_estadoImagem1 = null;
+                        g_estadoImagem2 = null;
+                    } else {
+                        document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem1 + ".png')";
+                        document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem2 + ".png')";
+                        g_estadoImagem1 = null;
+                        g_estadoImagem2 = null;
+                    }
+                }
+
+
+            }
+
+            function validaPares() {
+
+            }
+            var vetCartasEmbaralhadas = new Array();
+            function embaralharCartas() {
+                var vetCartasNaoEmbaralhadas = new Array();
+                for (i = 0; i < 10; i++) {
+                    vetCartasNaoEmbaralhadas[i] = i + 1;
+                    vetCartasNaoEmbaralhadas[i + 10] = i + 1;
+                }
+
+                for (i = 0; i < 20; i++) {
+                    var aux = dado(0, vetCartasNaoEmbaralhadas.length - 1);
+                    vetCartasEmbaralhadas[i] = vetCartasNaoEmbaralhadas[aux];
+                    vetCartasNaoEmbaralhadas.splice(aux, 1);
+                }
+            }
+            //delete vetor[i];
+            /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
 
         </script>
     </head>
@@ -433,30 +486,30 @@
             <label class="placar2" >Tentativas: <span  >0</span></label> 
         </div>
 
-        <input class="button2" type="button" value="Reiniciar" onclick="novoJogo()">
+        <input class="button2" type="button" value="Reiniciar" onclick="window.location.reload()">
 
         <div class="conteiner">
-            <div class="caixa" id="cel00" onmouseover="mudarCor('cel00', '#e1ffe4')" onmouseout="mudarCor('cel00', 'white')" onclick="inserirMarcacao('txt00')"><img  src="imagens/img_abobora.png" alt=""/><p id="txt00"></p></div>
-
-            <div class="caixa" id="cel01" onmouseover="mudarCor('cel01', '#e1ffe4')" onmouseout="mudarCor('cel01', 'white')" onclick="inserirMarcacao('txt01')"><img  src="imagens/img_i2.png" alt=""/><p id="txt01"></p></div>
-            <div class="caixa" id="cel02" onmouseover="mudarCor('cel02', '#e1ffe4')" onmouseout="mudarCor('cel02', 'white')" onclick="inserirMarcacao('txt02')"><img  src="imagens/img_i2.png" alt=""/><p id="txt02"></p></div>
-            <div class="caixa" id="cel03" onmouseover="mudarCor('cel03', '#e1ffe4')" onmouseout="mudarCor('cel03', 'white')" onclick="inserirMarcacao('txt03')"><img  src="imagens/img_i2.png" alt=""/><p id="txt03"></p></div>
-            <div class="caixa" id="cel10" onmouseover="mudarCor('cel10', '#e1ffe4')" onmouseout="mudarCor('cel10', 'white')" onclick="inserirMarcacao('txt10')"><img  src="imagens/img_i2.png" alt=""/><p id="txt10"></p></div>
-            <div class="caixa" id="cel11" onmouseover="mudarCor('cel11', '#e1ffe4')" onmouseout="mudarCor('cel11', 'white')" onclick="inserirMarcacao('txt11')"><img  src="imagens/img_i2.png" alt=""/><p id="txt11"></p></div>
-            <div class="caixa" id="cel12" onmouseover="mudarCor('cel12', '#e1ffe4')" onmouseout="mudarCor('cel12', 'white')" onclick="inserirMarcacao('txt12')"><img  src="imagens/img_i2.png" alt=""/><p id="txt12"></p></div>
-            <div class="caixa" id="cel13" onmouseover="mudarCor('cel13', '#e1ffe4')" onmouseout="mudarCor('cel13', 'white')" onclick="inserirMarcacao('txt13')"><img  src="imagens/img_i2.png" alt=""/><p id="txt13"></p></div>
-            <div class="caixa" id="cel20" onmouseover="mudarCor('cel20', '#e1ffe4')" onmouseout="mudarCor('cel20', 'white')" onclick="inserirMarcacao('txt20')"><img  src="imagens/img_i2.png" alt=""/><p id="txt20"></p></div>
-            <div class="caixa" id="cel21" onmouseover="mudarCor('cel21', '#e1ffe4')" onmouseout="mudarCor('cel21', 'white')" onclick="inserirMarcacao('txt21')"><img  src="imagens/img_i2.png" alt=""/><p id="txt21"></p></div>
-            <div class="caixa" id="cel22" onmouseover="mudarCor('cel22', '#e1ffe4')" onmouseout="mudarCor('cel22', 'white')" onclick="inserirMarcacao('txt22')"><img  src="imagens/img_i2.png" alt=""/><p id="txt22"></p></div>
-            <div class="caixa" id="cel23" onmouseover="mudarCor('cel23', '#e1ffe4')" onmouseout="mudarCor('cel23', 'white')" onclick="inserirMarcacao('txt23')"><img  src="imagens/img_i2.png" alt=""/><p id="txt23"></p></div>
-            <div class="caixa" id="cel30" onmouseover="mudarCor('cel30', '#e1ffe4')" onmouseout="mudarCor('cel30', 'white')" onclick="inserirMarcacao('txt30')"><img  src="imagens/img_i2.png" alt=""/><p id="txt30"></p></div>
-            <div class="caixa" id="cel31" onmouseover="mudarCor('cel31', '#e1ffe4')" onmouseout="mudarCor('cel31', 'white')" onclick="inserirMarcacao('txt31')"><img  src="imagens/img_i2.png" alt=""/><p id="txt31"></p></div>
-            <div class="caixa" id="cel32" onmouseover="mudarCor('cel32', '#e1ffe4')" onmouseout="mudarCor('cel32', 'white')" onclick="inserirMarcacao('txt32')"><img  src="imagens/img_i2.png" alt=""/><p id="txt32"></p></div>
-            <div class="caixa" id="cel33" onmouseover="mudarCor('cel33', '#e1ffe4')" onmouseout="mudarCor('cel33', 'white')" onclick="inserirMarcacao('txt33')"><img  src="imagens/img_i2.png" alt=""/><p id="txt33"></p></div>
-            <div class="caixa" id="cel40" onmouseover="mudarCor('cel40', '#e1ffe4')" onmouseout="mudarCor('cel40', 'white')" onclick="inserirMarcacao('txt40')"><img  src="imagens/img_i2.png" alt=""/><p id="txt40"></p></div>
-            <div class="caixa" id="cel41" onmouseover="mudarCor('cel41', '#e1ffe4')" onmouseout="mudarCor('cel41', 'white')" onclick="inserirMarcacao('txt41')"><img  src="imagens/img_i2.png" alt=""/><p id="txt41"></p></div>
-            <div class="caixa" id="cel42" onmouseover="mudarCor('cel42', '#e1ffe4')" onmouseout="mudarCor('cel42', 'white')" onclick="inserirMarcacao('txt42')"><img  src="imagens/img_i2.png" alt=""/><p id="txt42"></p></div>
-            <div class="caixa" id="cel43" onmouseover="mudarCor('cel43', '#e1ffe4')" onmouseout="mudarCor('cel43', 'white')" onclick="inserirMarcacao('txt43')"><img  src="imagens/img_i2.png" alt=""/><p id="txt43"></p></div>
+            
+            <div class="caixa" id="carta_1"  onclick="trocarCarta(0)"></div>
+            <div class="caixa" id="carta_2"  onclick="trocarCarta(1)"></div>
+            <div class="caixa" id="carta_3"  onclick="trocarCarta(2)"></div>
+            <div class="caixa" id="carta_4"  onclick="trocarCarta(3)"></div>
+            <div class="caixa" id="carta_5"  onclick="trocarCarta(4)"></div>
+            <div class="caixa" id="carta_6"  onclick="trocarCarta(5)"></div>
+            <div class="caixa" id="carta_7"  onclick="trocarCarta(6)"></div>
+            <div class="caixa" id="carta_8"  onclick="trocarCarta(7)"></div>
+            <div class="caixa" id="carta_9"  onclick="trocarCarta(8)"></div>
+            <div class="caixa" id="carta_10" onclick="trocarCarta(9)"></div>
+            <div class="caixa" id="carta_11" onclick="trocarCarta(10)"></div>
+            <div class="caixa" id="carta_12" onclick="trocarCarta(11)"></div>
+            <div class="caixa" id="carta_13" onclick="trocarCarta(12)"></div>
+            <div class="caixa" id="carta_14" onclick="trocarCarta(13)"></div>
+            <div class="caixa" id="carta_15" onclick="trocarCarta(14)"></div>
+            <div class="caixa" id="carta_16" onclick="trocarCarta(15)"></div>
+            <div class="caixa" id="carta_17" onclick="trocarCarta(16)"></div>
+            <div class="caixa" id="carta_18" onclick="trocarCarta(17)"></div>
+            <div class="caixa" id="carta_19" onclick="trocarCarta(18)"></div>
+            <div class="caixa" id="carta_20" onclick="trocarCarta(19)"></div>
         </div>    
 
         <audio loop autoplay>
