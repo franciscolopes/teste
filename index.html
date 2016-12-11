@@ -2,37 +2,33 @@
 
 <html>
     <head>
-        <title>Jogo da Memória Halloween</title>
+        <title>Jogo da Memória - Halloween Memory Challenge</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Butcherman" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <style>
-
             .caixa {
-                width: 620px;
+                width: 720px;
                 height: 220px;
-
                 padding: 1px;
-                border: solid 2px white;
+                border: solid 2px #e0dbdb;
                 position: absolute;
                 top:50%;
                 left:50%;
-                margin-left: -300px;
+                margin-left: -310px;
                 margin-top: -280px;
                 text-align: center;
                 color: black;
             }
 
-
             #linha{
                 padding: 15px;
                 width: 600px;
                 height: 20px;
-
-
             }
 
             body{
@@ -40,49 +36,24 @@
                 background-size:cover;
             }
             h1{
-                /*font-size: 200%;*/
                 font-size: 400px;
-                color: white ;
-                /*font-family: 'Open Sans', sans-serif;*/
-                /*font-family: 'Butcherman', cursive;*/
+                color: #e0dbdb ;
                 font-family: 'Creepster', cursive;
                 text-align: center;
-                
+                margin-top: 30px;
             }
+
             label{
                 font-size: 170%;
-
             }
-
-            /*.button{
-
-                padding: 10px;
-                width: 100px;
-                font-size: 150%;
-                margin-top: 40px;
-                color:white;
-                background-color: #db5e3e;
-                font-family: 'Open Sans', sans-serif;
-                border: 2px solid #db5e3e;
-                border-radius: 10px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                border-bottom-left-radius: 10px;
-            }*/
-/*INICIO NOME*/
+            /*INICIO NOME*/
             body {
-                /*font: 100%/1.3 'Oswald', sans-serif; */
-                
-                 font:  'Oswald', sans-serif; 
+                font-family: 'Lato', sans-serif;
                 font-size: 30%;
-               
                 text-align: center;  
                 padding: 1em 2em; 
                 margin:0 auto; 
                 font-weight: 700;
-                
-                
             }
             /* define the start and end points of the fade in object */
             @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -108,30 +79,20 @@
             } 	
 
             h1 {font-size: 5em; 
-                margin-top: 2em;
+                /*margin-top: 2em;*/
             }	
             .web {
-                color: #DF3651;
+                color: #CE566A;
             }
-
-
-
             @media only screen and (min-width: 50em) {	
-                h1 {font-size: 12em; margin-top: 1em;}
+                h1 {font-size: 12em; /*margin-top: 1em;*/}
             }
+            /* FIM NOME*/
 
-
-
-
-/* FIM NOME*/
-
-
-/* botão */
-
-
+            /* botão */
             .button {
                 border-radius: 4px;
-                background-color: #823c55;
+                background-color: #3e5776;
                 border: none;
                 color: #FFFFFF;
                 text-align: center;
@@ -141,8 +102,8 @@
                 transition: all 0.5s;
                 cursor: pointer;
                 margin: 5px;
-                font:  'Oswald', sans-serif; 
-            }
+                margin-top: -25px;
+                font-family: 'Lato', sans-serif;            }
 
             .button span {
                 cursor: pointer;
@@ -169,13 +130,8 @@
                 right: 0;
             }
 
-/* botão */
-
-
-
+            /* botão */
             .caixa1{
-
-
                 position: absolute;
                 top:50%;
                 left:50%;
@@ -183,7 +139,6 @@
                 margin-top: -10px;
             }
             .caixa2{
-
                 position: absolute;
                 top:50%;
                 left:50%;
@@ -193,17 +148,16 @@
             .icone1{
                 width: 50px;
                 height: 50px;
-
             }
             .icone2{
                 width: 70px;
                 height: 70px;
-
             }
+
             .txtinfo{
                 font-size: 15px;
                 color:white;
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Lato', sans-serif;
                 margin-left: auto;
                 margin-right: auto;
                 width: 6em
@@ -211,7 +165,7 @@
             .txtregras{
                 font-size: 15px;
                 color:white;
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Lato', sans-serif;
                 margin-left: auto;
                 margin-right: auto;
                 width: 6em
@@ -226,56 +180,40 @@
                 margin: 0 auto;
             }
 
-
             .gif{
                 width:  10%;
                 height: 10%;
                 float: left;
                 position: absolute;
-                
                 margin-left: -465px;
                 margin-top: 30px;
             }
-            
-            
+
             .gif2{
                 width:  109px;
                 height: 72px;
                 float: left;
                 position: absolute;
-                
                 margin-left: 545px;
                 margin-top: 500px;
             }
-            
 
             audio{
                 float: right;
             }
         </style>
         <script>
-
-
             function novoJogo() {
-
                 location.href = "jogo.html";
-
             }
 
-
-
-
         </script>
-
-
-
     </head>
     <body>
 
         <img src="imagens/bat_1.gif" class="gif" alt=""/>
         <img src="imagens/gato.gif" class="gif2" alt=""/>
         <div class="caixa">
-            
             <h1><span class="fade pro">HALLOWEEN</span><span class="fade web">MEMORY</span><span class="fade type">CHALLENGE</span></h1>
             <button class="button" onclick="novoJogo();"><span>JOGAR </span></button>
         </div>
@@ -286,18 +224,17 @@
                 da disciplina Fundamentos de Web Design II, 
                 do curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação,
                 Ciência e Tecnologia do Triângulo Mineiro. Aluno: Francisco Lopes da Cunha. Professor: Wilton de Paula Filho.
-
             </span>
         </div>
         <div class="img-with-text caixa2">
             <img  class="icone2" src="imagens/regras.png" alt=""/>
             <span class="txtregras">
                 Este é um jogo da memória, formado por 20 cartas, em que cada uma apresenta uma figura em um dos lados. 
-                Sendo que cada figura se repete em duas cartas diferentes.  
-                O tabuleiro mostra as cartas com as figuras voltadas para baixo.
-                Clique em uma carta para virá-la. Comece virando duas cartas, 
-                caso as figuras sejam iguais, você ganha esse par e joga novamente. 
-                Se forem cartas diferentes, estas cartas são desviradas, e você deve tentar novamente. 
+                Cada figura se repete em duas cartas diferentes.  
+                No início do jogo, o tabuleiro mostra as cartas com as figuras voltadas para baixo.
+                Clique em uma carta para virá-la, comece virando duas cartas.
+                Caso as figuras sejam iguais, você ganha esse par e joga novamente. 
+                Se forem cartas diferentes, estas cartas são desviradas, e você deve tentar outra vez. 
                 O jogo possui um cronomêtro, que marca o tempo que cada jogador leva para 
                 encontrar todos os pares. Ganha o jogo quem descobrir todos os pares em menos tempo. 
                 Para começar o jogo, clique no botão JOGAR
@@ -307,7 +244,6 @@
             <source src="audio/musica.mp3" type="audio/mpeg">
             Seu navegador não tem suporte para a tag <code>audio</code>.
         </audio>
-
     </body>
 </html>
 
