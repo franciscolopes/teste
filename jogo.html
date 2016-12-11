@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html><head>
+        <title>Jogo da Memória</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+
+               background: url("imagens/fundo.jpg")no-repeat center top fixed;
+                background-size:cover;
+                overflow: hidden;/*/previne que seja criada barra de rolagem*/
+
+            }
+            /*.button{
+
+                    padding: 10px;
+                    width: 100px;
+                    font-size: 100%;
+                    margin-top: 40px;
+                    color:white;
+                    background-color: #9e5f60;
+                    font-family: 'Open Sans', sans-serif;
+                    border: 2px solid #9e5f60;
+                    border-radius: 10px;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                }*/
+
+            /* botão */
+
+
+            .button {
+                border-radius: 4px;
+                background-color: #823c55;
+                border: none;
+                color: #FFFFFF;
+                text-align: center;
+                font-size: 28px;
+                padding: 20px;
+                width: 200px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+                margin-left: 15px;
+                font:  'Oswald', sans-serif; 
+                float: left;
+            }
+
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+            .button span:after {
+                content: '«';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+            .button:hover span {
+                padding-right: 25px;
+            }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+            /* botão */
+            /* botao 2*/
+            .button2 {
+                padding: 15px 25px;
+                clear: left;
+                font-size: 28px;
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+                color: #fff;
+                background-color: #9e5f60;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 9px #999;
+                font:  'Oswald', sans-serif; 
+                display: block;
+                margin: 45px;
+                margin-top: 15px;
+                margin-bottom: 55px;
+                margin-left: 15px; 
+                width: 200px;
+            }
+            .button2:hover {background-color: #9e5f6b}
+            .button2:active {
+                background-color: #9e5f6b;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+            /* botao 2*/
+            .conteiner{
+                border-radius: 15px;
+                padding: 5px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 600px;
+                height: 600px;
+                margin-left: -300px;
+                margin-top: -300px;
+
+            }
+            .caixa{
+                width: 15%;
+                height: 15%;
+                background-color: #595959;
+                float: left;
+                margin:7px;
+                background-color: white;
+                color: white;
+                font-size: 90px;
+                text-align: center;
+                /*border: 2px dashed #db5e3e;*/
+
+                border-radius: 10px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+
+            }
+            .caixa2{
+                border: 0px solid #DF3651;
+                border-radius: 4px;
+                float: left; 
+                width: 200px;
+                height: 320px;
+                margin-left: 15px;
+                margin-bottom: 5px;
+                clear: left;
+
+                background-color: #DF3651; /*rgba(255,255,255,0.4);*/
+
+            }
+            /*p{
+               margin: 0px;
+               font-weight: bold;
+               color: black;
+               font-size: 160px;
+               text-align: center;
+               font-family: verdana;
+                
+            }*/
+            #menu{
+                position: absolute;
+                background-color: white;
+                top:-50px;
+                left:50%;
+                width:100px;
+                margin-left:-50px;
+                transition: all 0.9s;
+                text-align: center;
+
+            }
+            #menu:hover{
+                top:0px;
+            }
+            .menu {
+                text-align: center;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                font-family: 'Open Sans', sans-serif;
+                display: inline-block;
+                position: relative;
+
+            }
+            img{
+                width: 90px;
+                height: 90px;
+            }
+            .placar{
+                font-size: 38px;
+                font-weight: bold;
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+                color: white;
+                display: inline-block;
+                position: relative;
+
+            }
+            .placar2{
+                font-size: 15px;
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+                color: white;
+                display: block;
+            }
+            hr{
+                color: white;
+                width: 180px;
+
+            }
+            /*fantasma*/
+            .caixaF {
+                width: 100px;
+                height: 100px;
+                position: relative;
+                /* animation: mymove 5s infinite;*/
+                animation: fly 20s infinite;
+
+            }
+            /* Standard syntax */
+            @keyframes fly {
+                0% {
+                    transform: scaleX(-1);
+                    left: -10%;
+                    top: 0;
+                }
+                10% {
+                    left: 5%;
+                    top: 5px;
+                }
+                20% {
+                    left: 15%;
+                    top: 10px;
+                }
+                30% {
+                    left: 40%;
+                    top: 0;
+                }
+                40% {
+                    left:70%;
+                    top: 30px;
+                }
+                50% {
+                    left: 110%;
+                    transform: scaleX(-1);
+                    top: 50px;
+                }
+                51% {
+                    transform: scaleX(1);
+                }
+                60% {
+                    left: 70%;
+                    top: 0px;
+                }
+                70% {
+                    left: 50%;
+                    top: 30px;
+                }
+                80% {
+                    left: 20%;
+                    top: 20px;
+                }
+                90% {
+                    left: 10%;
+                    top: 5px;
+                }
+                100% {
+                    left: -10%;
+                    top: 0;
+                    transform: scaleX(1);
+                }
+            }
+
+            /* @keyframes mymove {
+                 0%   {left: 0px;}
+                 25%  {left: 200px;}
+                 75%  {left: 50px}
+                 100% {left: 100px;}
+             }*/
+            /*fantasma*/
+            /*fantasma grande*/
+            .caixaFG{
+                width: 400px;
+                height: 344px;
+                float: right;
+                margin-top: -39%;
+                margin-right: 25px;
+            }
+            .f1{
+                width: 400px;
+                height: 344px;
+                border: none;
+                opacity: 0;
+                -webkit-transition: opacity 3s; 
+                -o-transition: opacity 3s;
+                transition: opacity 3s;
+            }
+            /*fantasma grande*/
+            /*fantasma pequeno*/
+            .caixaFP{
+                width: 300px;
+                height: 120px;
+                margin-top: -500px;
+                margin-right: 500px;
+                position: absolute;
+                border: 2px solid red;
+            }
+            .f2{
+                width: 300px;
+                height: 120px;
+                border: none;
+                opacity: 0;
+                -webkit-transition: opacity 3s; 
+                -o-transition: opacity 3s;
+                transition: opacity 3s;
+            }
+            /*fantasma pequeno*/
+        </style>
+
+        <script>
+            var g_cronometro;
+            var g_imgLateral = "";
+            function mudarCor(id, cor) {
+                document.getElementById(id).style.backgroundColor = cor;
+            }
+            function inserirMarcacao(idtxt) {
+                document.getElementById(idtxt).innerHTML = g_marcacao;
+                (g_marcacao === 'X') ? g_marcacao = '0' : g_marcacao = 'X';
+            }
+
+            function novoJogo() {
+                pararCronometro();
+                
+                ligaCronometro();
+                document.getElementById("imgLateral").style.opacity = 0;
+                setTimeout(mostraImagemLateral, 20000);
+                setTimeout(mostraImagemPequena, 10000);
+            }
+
+            function incio() {
+                location.href = "index.html";
+            }
+
+            /*  ---------------------------------CRONOMETRO --------------------------------- */
+            var inicioCont = 0; //incializa e atribui 0 para variável 
+            var ultimoCont = 0;//incializa e atribui 0 para variável 
+            var diferenca = 0;//incializa e atribui 0 para variável 
+            var statusCronometro = 0;
+            function cronometro() {
+                ultimoCont = new Date();//instanciacao de objeto data, com data e horário atual. Using new Date(), creates a new date object with the current date and time:
+                diferenca = ultimoCont - inicioCont;//atribui para var diferenca  a diferença entre a data atual e a data que o cronometro foi iniciado, a diferena vai gerar uma data com mintuos e segundos zerados Wed Dec 31 1969 21:00:00 GMT-0300 (BRT)
+                diferenca = new Date(diferenca);//cria objeto com a data de diferenca Using new Date(date string), creates a new date object from the specified date and time:
+                var sec = diferenca.getSeconds(); //pega segundos 
+                var min = diferenca.getMinutes(); //pega minutos
+                if (min < 10) {
+                    min = "0" + min;
+                }
+                if (sec < 10) {
+                    sec = "0" + sec;
+                }
+                var crono = min + ":" + sec;
+                document.getElementById("cronometro").innerHTML = crono;
+                setTimeout("cronometro()", 10);//chama a função a a cada ??? segundos
+            }
+            //função para registrar o tempo máximo atingido pelo cronometro até a finalzação da partida, nesse momento, a 
+            //deve ser usado sessao não localstorage
+            function pararCronometro() {
+                statusCronometro = 0;
+                var atual = new Date();
+                var final = atual - inicioCont;
+                var tempoFinal = new Date(final);
+
+                var sec = tempoFinal.getSeconds(); //pega segundos 
+                var min = tempoFinal.getMinutes(); //pega minutos
+                if (min < 10) {
+                    min = "0" + min;
+                }
+                if (sec < 10) {
+                    sec = "0" + sec;
+                }
+                var logTempo = min + ":" + sec;
+                /* armazenamento local= criar função para parar o cronometro e então sim armazenar o tempo*/
+                localStorage.tempo = logTempo;
+                // Retrieve
+                document.getElementById("p2_tempo").innerHTML = localStorage.tempo;
+                //localStorage.removeItem("tempo");
+
+                /*armazenamento local*/
+            }
+
+            function ligaCronometro() {
+                statusCronometro = 1;
+                inicioCont = new Date();// cria data com horario em que o cronometro foi ligado
+                cronometro();
+            }
+
+            /* ---------------------------------FIM CRONOMETRO  ---------------------------------*/
+
+            /*chama fantasma grande*/
+            function mostraImagemLateral() {
+
+                document.getElementById("imgLateral").style.opacity = 1;
+                setTimeout(apagaImg, 8000);
+            }
+
+
+            function apagaImg() {
+                document.getElementById("imgLateral").style.opacity = 0;
+                setTimeout(mostraImagemLateral, 20000);
+            }
+
+
+            /*chama fantasma grande*/
+
+            /*chama fantasma pequeno*/
+            function dado() {
+                return parseInt(Math.random() * (800 - 0) + 0 + 0.5);
+            }
+
+            function mostraImagemPequena() {
+                document.getElementById("id_caixaFP").style.left = dado() + "px";
+                document.getElementById("id_caixaFP").style.right = dado() + "px";
+                document.getElementById("id_caixaFP").style.top = dado() + "px";
+                document.getElementById("imgPequena").style.opacity = 1;
+                setTimeout(apagaImgPequena, 4000);
+            }
+
+
+            function apagaImgPequena() {
+                document.getElementById("imgPequena").style.opacity = 0;
+                setTimeout(mostraImagemPequena, 10000);
+            }
+
+            /*chama fantasma pequeno*/
+
+
+
+        </script>
+    </head>
+
+    <body onload="novoJogo()">
+        <button class="button" onclick="incio()"><span>Início </span></button>
+        <div class="caixa2">
+
+            <p class="menu" >Número de tentativas <span class="placar">0</span></p>
+            <label class="menu">Cronômetro: <span id="cronometro" class="placar">00:00</span></label>
+            <hr>
+            <p class="menu" >Dados do último jogador: </p>
+            <label class="placar2" >Tempo: <span id="p2_tempo">00:00</span></label> 
+            <label class="placar2">Nome: <span>Nome</span></label> 
+            <label class="placar2" >Tentativas: <span  >0</span></label> 
+        </div>
+
+        <input class="button2" type="button" value="Reiniciar" onclick="novoJogo()">
+
+        <div class="conteiner">
+            <div class="caixa" id="cel00" onmouseover="mudarCor('cel00', '#e1ffe4')" onmouseout="mudarCor('cel00', 'white')" onclick="inserirMarcacao('txt00')"><img  src="imagens/img_abobora.png" alt=""/><p id="txt00"></p></div>
+
+            <div class="caixa" id="cel01" onmouseover="mudarCor('cel01', '#e1ffe4')" onmouseout="mudarCor('cel01', 'white')" onclick="inserirMarcacao('txt01')"><img  src="imagens/img_i1.png" alt=""/><p id="txt01"></p></div>
+            <div class="caixa" id="cel02" onmouseover="mudarCor('cel02', '#e1ffe4')" onmouseout="mudarCor('cel02', 'white')" onclick="inserirMarcacao('txt02')"><img  src="imagens/img_i2.png" alt=""/><p id="txt02"></p></div>
+            <div class="caixa" id="cel03" onmouseover="mudarCor('cel03', '#e1ffe4')" onmouseout="mudarCor('cel03', 'white')" onclick="inserirMarcacao('txt03')"><img  src="imagens/img_i1.png" alt=""/><p id="txt03"></p></div>
+            <div class="caixa" id="cel10" onmouseover="mudarCor('cel10', '#e1ffe4')" onmouseout="mudarCor('cel10', 'white')" onclick="inserirMarcacao('txt10')"><img  src="imagens/img_i1.png" alt=""/><p id="txt10"></p></div>
+            <div class="caixa" id="cel11" onmouseover="mudarCor('cel11', '#e1ffe4')" onmouseout="mudarCor('cel11', 'white')" onclick="inserirMarcacao('txt11')"><img  src="imagens/img_i3.png" alt=""/><p id="txt11"></p></div>
+            <div class="caixa" id="cel12" onmouseover="mudarCor('cel12', '#e1ffe4')" onmouseout="mudarCor('cel12', 'white')" onclick="inserirMarcacao('txt12')"><img  src="imagens/img_i3.png" alt=""/><p id="txt12"></p></div>
+            <div class="caixa" id="cel13" onmouseover="mudarCor('cel13', '#e1ffe4')" onmouseout="mudarCor('cel13', 'white')" onclick="inserirMarcacao('txt13')"><img  src="imagens/img_i3.png" alt=""/><p id="txt13"></p></div>
+            <div class="caixa" id="cel20" onmouseover="mudarCor('cel20', '#e1ffe4')" onmouseout="mudarCor('cel20', 'white')" onclick="inserirMarcacao('txt20')"><img  src="imagens/img_i3.png" alt=""/><p id="txt20"></p></div>
+            <div class="caixa" id="cel21" onmouseover="mudarCor('cel21', '#e1ffe4')" onmouseout="mudarCor('cel21', 'white')" onclick="inserirMarcacao('txt21')"><img  src="imagens/img_i2.png" alt=""/><p id="txt21"></p></div>
+            <div class="caixa" id="cel22" onmouseover="mudarCor('cel22', '#e1ffe4')" onmouseout="mudarCor('cel22', 'white')" onclick="inserirMarcacao('txt22')"><img  src="imagens/img_i2.png" alt=""/><p id="txt22"></p></div>
+            <div class="caixa" id="cel23" onmouseover="mudarCor('cel23', '#e1ffe4')" onmouseout="mudarCor('cel23', 'white')" onclick="inserirMarcacao('txt23')"><img  src="imagens/img_i2.png" alt=""/><p id="txt23"></p></div>
+            <div class="caixa" id="cel30" onmouseover="mudarCor('cel30', '#e1ffe4')" onmouseout="mudarCor('cel30', 'white')" onclick="inserirMarcacao('txt30')"><img  src="imagens/img_i2.png" alt=""/><p id="txt30"></p></div>
+            <div class="caixa" id="cel31" onmouseover="mudarCor('cel31', '#e1ffe4')" onmouseout="mudarCor('cel31', 'white')" onclick="inserirMarcacao('txt31')"><img  src="imagens/img_i2.png" alt=""/><p id="txt31"></p></div>
+            <div class="caixa" id="cel32" onmouseover="mudarCor('cel32', '#e1ffe4')" onmouseout="mudarCor('cel32', 'white')" onclick="inserirMarcacao('txt32')"><img  src="imagens/img_i2.png" alt=""/><p id="txt32"></p></div>
+            <div class="caixa" id="cel33" onmouseover="mudarCor('cel33', '#e1ffe4')" onmouseout="mudarCor('cel33', 'white')" onclick="inserirMarcacao('txt33')"><p id="txt33"></p></div>
+            <div class="caixa" id="cel40" onmouseover="mudarCor('cel40', '#e1ffe4')" onmouseout="mudarCor('cel40', 'white')" onclick="inserirMarcacao('txt40')"><p id="txt40"></p></div>
+            <div class="caixa" id="cel41" onmouseover="mudarCor('cel41', '#e1ffe4')" onmouseout="mudarCor('cel41', 'white')" onclick="inserirMarcacao('txt41')"><p id="txt41"></p></div>
+            <div class="caixa" id="cel42" onmouseover="mudarCor('cel42', '#e1ffe4')" onmouseout="mudarCor('cel42', 'white')" onclick="inserirMarcacao('txt42')"><p id="txt42"></p></div>
+            <div class="caixa" id="cel43" onmouseover="mudarCor('cel43', '#e1ffe4')" onmouseout="mudarCor('cel43', 'white')" onclick="inserirMarcacao('txt43')"><p id="txt43"></p></div>
+        </div>    
+
+        <audio loop autoplay>
+            <source src="audio/musica.mp3" type="audio/mpeg">
+            Seu navegador não tem suporte para a tag <code>audio</code>.
+        </audio>
+        <div class="caixaF" >
+            <img src="imagens/boo_9.gif" alt=""/>
+        </div>
+        <div class="caixaFG" id="id_caixaFG" >
+
+            <img class="f1" id="imgLateral" src="imagens/boo_7.gif" alt=""/>
+
+        </div>
+        <div class="caixaFP" id="id_caixaFP" >
+
+            <img class="f2" id="imgPequena" src="imagens/boo_4.gif" alt=""/>
+
+        </div>
+    </body></html>
