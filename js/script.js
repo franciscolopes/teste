@@ -154,15 +154,17 @@ function trocarCarta(posicao) {
         if (g_estadoImagem1 !== g_estadoImagem2) {
             setTimeout(mostraImagemOriginal, 700);
             playFail();
+            contaTentativas();
+
 
         } else {
             document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem1 + ".png')";
             document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem2 + ".png')";
             g_estadoImagem1 = "carta_0";
             g_estadoImagem2 = "carta_0";
-
             playSuccess();
-           contaAcertos();
+            contaTentativas();
+            contaAcertos();
 
         }
     }
@@ -190,8 +192,23 @@ function finalizaJogo() {
     sessionStorage.setItem('userName', nomeUsuario);
     nome = sessionStorage.getItem('userName');
     alert(nome);
-    iniciarJogo();
+    /*iniciarJogo();*/
+    atualizaDados();
+}
 
+
+function atualizaDados() {
+    document.getElementById("nomeUser").innerHTML = nome;
+    document.getElementById("tentativasUser").innerHTML = totalTentativas;
+}
+
+var totalTentativas;
+var nroTentativas = 0;
+function contaTentativas(){
+    nroTentativas = nroTentativas + 1;
+    document.getElementById("tentativas").innerHTML = nroTentativas;
+    /*sessionStorage.setItem('userTentativas', nroTentativas);
+    totalTentativas = sessionStorage.getItem('userTentativas');*/
 }
 
 /*function contaAcertos(){

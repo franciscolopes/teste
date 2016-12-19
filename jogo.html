@@ -12,13 +12,13 @@
     <body onload="novoJogo()">
         <button class="button" onclick="incio()"><span>Início </span></button>
         <div class="caixaMenu">
-            <p class="menu" >Número de tentativas <span class="placar">0</span></p>
+            <p class="menu" >Número de tentativas <span id="tentativas" class="placar">0</span></p>
             <label class="menu">Cronômetro: <span id="cronometro" class="placar">00:00</span></label>
             <hr>
             <p class="menu2" >Último jogador: </p>
             <label class="placar2" >Tempo: <span id="p2_tempo">00:00</span></label> 
-            <label class="placar2">Nome: <span>Nome</span></label> 
-            <label class="placar2" >Tentativas: <span  >0</span></label> 
+            <label class="placar2">Nome: <span id="nomeUser">Nome</span></label> 
+            <label class="placar2" >Tentativas: <span id="tentativasUser" >0</span></label> 
         </div>
         <input class="button2" type="button" value="Reiniciar" onclick="window.location.reload()">
         <div class="conteiner">
