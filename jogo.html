@@ -1,495 +1,17 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Jogo da Memória - Halloween Memory Challenge</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <style>
-            body{
-                background: url("imagens/fundo.jpg")no-repeat center top fixed;
-                background-size:cover;
-                overflow: hidden;/*/previne que seja criada barra de rolagem*/
-            }
-
-            /* botão */
-            .button {
-                border-radius: 4px;
-                background-color: #894b5e;
-                border: none;
-                color: #FFFFFF;
-                text-align: center;
-                font-size: 28px;
-                padding: 20px;
-                width: 200px;
-                transition: all 0.5s;
-                cursor: pointer;
-                margin-top: 20px;
-                margin-bottom: 5px;
-                margin-left: 40px;
-                font-family: 'Lato', sans-serif;
-                float: left;
-            }
-
-            .button span {
-                cursor: pointer;
-                display: inline-block;
-                position: relative;
-                transition: 0.5s;
-            }
-
-            .button span:after {
-                content: '«';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
-
-            .button:hover span {
-                padding-right: 25px;
-            }
-
-            .button:hover span:after {
-                opacity: 1;
-                right: 0;
-            }
-            /* botão */
-
-            /* botao 2*/
-            .button2 {
-                padding: 15px 25px;
-                clear: left;
-                font-size: 28px;
-                text-align: center;
-                cursor: pointer;
-                outline: none;
-                color: #fff;
-                background-color: #6787af;
-                border: none;
-                border-radius: 15px;
-                box-shadow: 0 9px #999;
-                font:  'Lato', sans-serif; 
-                display: block;
-                margin: 45px;
-                margin-top: 15px;
-                margin-bottom: 55px;
-                margin-left: 40px; 
-                width: 200px;
-            }
-            .button2:hover {background-color: #52739d}
-            .button2:active {
-                background-color: #456083;
-                box-shadow: 0 5px #666;
-                transform: translateY(4px);
-            }
-            /* botao 2*/
-            .conteiner{
-                border-radius: 15px;
-                padding: 5px;
-                position: absolute;
-                top: 40%;
-                left: 50%;
-                width: 838px;
-                height: 838px;
-                margin-left: -360px;
-                margin-top: -300px;
-            }
-            .caixa{
-                width: 15%;
-                height: 15%;
-                background-color: white;/*#595959;*/
-                float: left;
-                margin:7px;
-                background-color: #efeded;/*#B2C1DE;*/
-                color: white;
-                font-size: 90px;
-                text-align: center;
-                /*border: 2px dashed #db5e3e;*/
-                background-image: url("imagens/carta_0.png");
-                border-radius: 10px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-                border-bottom-left-radius: 10px;
-                border: solid 2px #a095a0;
-
-            }
-            .caixa2{
-                border: 0px solid #7e8099;
-                border-radius: 4px;
-                float: left; 
-                width: 200px;
-                height: 320px;
-                margin-left: 40px;
-                margin-bottom: 5px;
-                clear: left;
-                display: inline-block; 
-                position: relative;
-                background-color: #8EA4CF; /*rgba(255,255,255,0.4);*/
-
-            }
-            /*p{
-               margin: 0px;
-               font-weight: bold;
-               color: black;
-               font-size: 160px;
-               text-align: center;
-               font-family: verdana;
-                
-            }*/
-            #menu{
-                position: absolute;
-                background-color: white;
-                top:-50px;
-                left:50%;
-                width:100px;
-                margin-left:-50px;
-                transition: all 0.9s;
-                text-align: center;
-
-            }
-            #menu:hover{
-                top:0px;
-            }
-            .menu {
-                text-align: center;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                cursor: pointer;
-                font-family: 'Lato', sans-serif;
-                display: inline-block;
-                position: relative;
-
-            }
-            img{
-                width: 90px;
-                height: 90px;
-            }
-            .placar{
-                font-size: 45px;
-                font-weight: bold;
-                font-family: 'Lato', sans-serif;
-                text-align: center;
-                color: white;
-                display: inline-block;
-                position: relative;
-
-            }
-            .placar2{
-                font-size: 15px;
-                font-family: 'Lato', sans-serif;
-                text-align: center;
-                color: white;
-                display: block;
-            }
-            hr{
-                color: white;
-                width: 180px;
-
-            }
-            /*fantasma*/
-            .caixaF {
-                width: 100px;
-                height: 100px;
-                position: relative;
-                /* animation: mymove 5s infinite;*/
-                animation: fly 20s infinite;
-                margin-top: 15%;
-            }
-            /* Standard syntax */
-            @keyframes fly {
-                0% {
-                    transform: scaleX(-1);
-                    left: -10%;
-                    /*top: 0;*/
-                }
-                10% {
-                    left: 5%;
-                    /*top: 5px;*/
-                }
-                20% {
-                    left: 15%;
-                    /*top: 10px;*/
-                }
-                30% {
-                    left: 40%;
-                    /*top: 0;*/
-                }
-                40% {
-                    left:70%;
-                    /*top: 30px;*/
-                }
-                50% {
-                    left: 110%;
-                    transform: scaleX(-1);
-                    /*top: 50px;*/
-                }
-                51% {
-                    transform: scaleX(1);
-                }
-                60% {
-                    left: 70%;
-                    /*top: 0px;*/
-                }
-                70% {
-                    left: 50%;
-                    /*top: 30px;*/
-                }
-                80% {
-                    left: 20%;
-                    /*top: 20px;*/
-                }
-                90% {
-                    left: 10%;
-                    /*top: 5px;*/
-                }
-                100% {
-                    left: -10%;
-                    /*top: 0;*/
-                    transform: scaleX(1);
-                }
-            }
-
-            /* @keyframes mymove {
-                 0%   {left: 0px;}
-                 25%  {left: 200px;}
-                 75%  {left: 50px}
-                 100% {left: 100px;}
-             }*/
-            /*fantasma*/
-            /*fantasma grande*/
-            .caixaFG{
-                width: 450px;
-                height: 394px;
-                float: right;
-                margin-top: -37%;
-                margin-right: 85px;
-            }
-            .f1{
-                width: 450px;
-                height: 394px;
-                border: none;
-                opacity: 0;
-                -webkit-transition: opacity 3s; 
-                -o-transition: opacity 3s;
-                transition: opacity 3s;
-            }
-            /*fantasma grande*/
-            /*fantasma pequeno*/
-            .caixaFP{
-                width: 300px;
-                height: 120px;
-                margin-top: 0%;/*-500px*/
-                margin-right: 500px;
-                position: absolute;
-                border: 2px solid red;
-            }
-            .f2{
-                width: 300px;
-                height: 120px;
-                border: none;
-                opacity: 0;
-                -webkit-transition: opacity 3s; 
-                -o-transition: opacity 3s;
-                transition: opacity 3s;
-            }
-            /*fantasma pequeno*/
-            .menu2{
-                text-align: center;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                cursor: pointer;
-                font-family: 'Lato', sans-serif;
-                display: inline-block;
-                position: relative;
-                margin-left: 15px;
-                margin-bottom: 5px;
-            }
-        </style>
-
-        <script>
-            var g_cronometro;
-            var g_imgLateral = "";
-            function mudarCor(id, cor) {
-                document.getElementById(id).style.backgroundColor = cor;
-            }
-            function inserirMarcacao(idtxt) {
-                document.getElementById(idtxt).innerHTML = g_marcacao;
-                (g_marcacao === 'X') ? g_marcacao = '0' : g_marcacao = 'X';
-            }
-
-            function novoJogo() {
-                pararCronometro();
-                ligaCronometro();
-                document.getElementById("imgLateral").style.opacity = 0;
-                setTimeout(mostraImagemLateral, 20000);
-                setTimeout(mostraImagemPequena, 10000);
-                embaralharCartas();
-            }
-
-            function incio() {
-                location.href = "index.html";
-            }
-
-            /*  ---------------------------------CRONOMETRO --------------------------------- */
-            var inicioCont = 0; //incializa e atribui 0 para variável 
-            var ultimoCont = 0;//incializa e atribui 0 para variável 
-            var diferenca = 0;//incializa e atribui 0 para variável 
-            var statusCronometro = 0;
-            function cronometro() {
-                ultimoCont = new Date();//instanciacao de objeto data, com data e horário atual. Using new Date(), creates a new date object with the current date and time:
-                diferenca = ultimoCont - inicioCont;//atribui para var diferenca  a diferença entre a data atual e a data que o cronometro foi iniciado, a diferena vai gerar uma data com mintuos e segundos zerados Wed Dec 31 1969 21:00:00 GMT-0300 (BRT)
-                diferenca = new Date(diferenca);//cria objeto com a data de diferenca Using new Date(date string), creates a new date object from the specified date and time:
-                var sec = diferenca.getSeconds(); //pega segundos 
-                var min = diferenca.getMinutes(); //pega minutos
-                if (min < 10) {
-                    min = "0" + min;
-                }
-                if (sec < 10) {
-                    sec = "0" + sec;
-                }
-                var crono = min + ":" + sec;
-                document.getElementById("cronometro").innerHTML = crono;
-                setTimeout("cronometro()", 10);//chama a função a a cada ??? segundos
-            }
-            //função para registrar o tempo máximo atingido pelo cronometro até a finalzação da partida, nesse momento, a 
-            //deve ser usado sessao não localstorage
-            function pararCronometro() {
-                statusCronometro = 0;
-                var atual = new Date();
-                var final = atual - inicioCont;
-                var tempoFinal = new Date(final);
-
-                var sec = tempoFinal.getSeconds(); //pega segundos 
-                var min = tempoFinal.getMinutes(); //pega minutos
-                if (min < 10) {
-                    min = "0" + min;
-                }
-                if (sec < 10) {
-                    sec = "0" + sec;
-                }
-                var logTempo = min + ":" + sec;
-                /* armazenamento local= criar função para parar o cronometro e então sim armazenar o tempo*/
-                localStorage.tempo = logTempo;
-                // Retrieve
-                document.getElementById("p2_tempo").innerHTML = localStorage.tempo;
-                //localStorage.removeItem("tempo");
-
-                /*armazenamento local*/
-            }
-
-            function ligaCronometro() {
-                statusCronometro = 1;
-                inicioCont = new Date();// cria data com horario em que o cronometro foi ligado
-                cronometro();
-            }
-
-            /* ---------------------------------FIM CRONOMETRO  ---------------------------------*/
-
-            /*chama fantasma grande*/
-            function mostraImagemLateral() {
-
-                document.getElementById("imgLateral").style.opacity = 1;
-                setTimeout(apagaImg, 8000);
-            }
-
-
-            function apagaImg() {
-                document.getElementById("imgLateral").style.opacity = 0;
-                setTimeout(mostraImagemLateral, 20000);
-            }
-
-
-            /*chama fantasma grande*/
-
-            /*chama fantasma pequeno*/
-            function dado() {
-                return parseInt(Math.random() * (800 - 0) + 0 + 0.5);
-            }
-
-            function mostraImagemPequena() {
-                document.getElementById("id_caixaFP").style.left = dado() + "px";
-                document.getElementById("id_caixaFP").style.right = dado() + "px";
-                document.getElementById("id_caixaFP").style.top = dado() + "px";
-                document.getElementById("imgPequena").style.opacity = 1;
-                setTimeout(apagaImgPequena, 4000);
-            }
-
-
-            function apagaImgPequena() {
-                document.getElementById("imgPequena").style.opacity = 0;
-                setTimeout(mostraImagemPequena, 10000);
-            }
-
-            /*chama fantasma pequeno*/
-
-
-            /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
-            var g_sorteado;
-            var g_estadoImagem1;
-            var g_estadoImagem2;
-            function dado(limiteInf, limiteSup) {
-                return parseInt(Math.random() * (limiteSup - limiteInf) + limiteInf + 0.5);
-            }
-            function trocarCarta(posicao) {
-                document.getElementById("carta_" + (posicao + 1)).style.backgroundImage = "url('imagens/carta_" + vetCartasEmbaralhadas[posicao] + ".png')";
-
-                if (g_estadoImagem1 == null) {
-                    posicaoImg01 = posicao;
-                    g_estadoImagem1 = vetCartasEmbaralhadas[posicao];
-                } else {
-                    posicaoImg02 = posicao;
-                    g_estadoImagem2 = vetCartasEmbaralhadas[posicao];
-                }
-                if (g_estadoImagem1 != null && g_estadoImagem2 != null) {
-                    if (g_estadoImagem1 != g_estadoImagem2) {
-                        document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_0.png')";
-                        document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_0.png')";
-                        g_estadoImagem1 = null;
-                        g_estadoImagem2 = null;
-                    } else {
-                        document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem1 + ".png')";
-                        document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem2 + ".png')";
-                        g_estadoImagem1 = null;
-                        g_estadoImagem2 = null;
-                    }
-                }
-
-
-            }
-
-            function validaPares() {
-
-            }
-            var vetCartasEmbaralhadas = new Array();
-            function embaralharCartas() {
-                var vetCartasNaoEmbaralhadas = new Array();
-                for (i = 0; i < 10; i++) {
-                    vetCartasNaoEmbaralhadas[i] = i + 1;
-                    vetCartasNaoEmbaralhadas[i + 10] = i + 1;
-                }
-
-                for (i = 0; i < 20; i++) {
-                    var aux = dado(0, vetCartasNaoEmbaralhadas.length - 1);
-                    vetCartasEmbaralhadas[i] = vetCartasNaoEmbaralhadas[aux];
-                    vetCartasNaoEmbaralhadas.splice(aux, 1);
-                }
-            }
-            //delete vetor[i];
-            /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
-
-        </script>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <script src="js/script.js" type="text/javascript"></script>
+   
     </head>
-
     <body onload="novoJogo()">
         <button class="button" onclick="incio()"><span>Início </span></button>
-        <div class="caixa2">
-
+        <div class="caixaMenu">
             <p class="menu" >Número de tentativas <span class="placar">0</span></p>
             <label class="menu">Cronômetro: <span id="cronometro" class="placar">00:00</span></label>
             <hr>
@@ -498,12 +20,10 @@
             <label class="placar2">Nome: <span>Nome</span></label> 
             <label class="placar2" >Tentativas: <span  >0</span></label> 
         </div>
-
         <input class="button2" type="button" value="Reiniciar" onclick="window.location.reload()">
-
         <div class="conteiner">
-            
             <div class="caixa" id="carta_1"  onclick="trocarCarta(0)"></div>
+            <!--<div class="caixa" id="carta_1"  onclick="trocarCarta(0); playSuccess()"></div>-->
             <div class="caixa" id="carta_2"  onclick="trocarCarta(1)"></div>
             <div class="caixa" id="carta_3"  onclick="trocarCarta(2)"></div>
             <div class="caixa" id="carta_4"  onclick="trocarCarta(3)"></div>
@@ -524,22 +44,27 @@
             <div class="caixa" id="carta_19" onclick="trocarCarta(18)"></div>
             <div class="caixa" id="carta_20" onclick="trocarCarta(19)"></div>
         </div>    
-
         <audio loop autoplay>
             <source src="audio/musica.mp3" type="audio/mpeg">
             Seu navegador não tem suporte para a tag <code>audio</code>.
+        </audio>
+        <audio id="failAudio" >
+            <source src="audio/fail.wav" type="audio/wav">
+            Seu navegador não tem suporte para a tag audio.
+        </audio>
+
+        <audio id="successAudio" >
+            <source src="audio/success.mp3" type="audio/mpeg">
+            Seu navegador não tem suporte para a tag audio.
         </audio>
         <div class="caixaF" >
             <img src="imagens/boo_9.gif" alt=""/>
         </div>
         <div class="caixaFG" id="id_caixaFG" >
-
             <img class="f1" id="imgLateral" src="imagens/boo_7.gif" alt=""/>
-
         </div>
         <div class="caixaFP" id="id_caixaFP" >
-
             <img class="f2" id="imgPequena" src="imagens/boo_4.gif" alt=""/>
-
         </div>
+
     </body></html>
