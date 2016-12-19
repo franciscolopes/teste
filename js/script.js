@@ -91,43 +91,6 @@ function apagaImg() {
 /*chama fantasma grande*/
 
 
-/*back
- 
- var g_estadoImagem1;
- var g_estadoImagem2;
- function dado(limiteInf, limiteSup) {
- return parseInt(Math.random() * (limiteSup - limiteInf) + limiteInf + 0.5);
- }
- function trocarCarta(posicao) {
- document.getElementById("carta_" + (posicao + 1)).style.backgroundImage = "url('imagens/carta_" + vetCartasEmbaralhadas[posicao] + ".png')";
- 
- if (g_estadoImagem1 == null) {
- posicaoImg01 = posicao;
- g_estadoImagem1 = vetCartasEmbaralhadas[posicao];
- } else {
- posicaoImg02 = posicao;
- g_estadoImagem2 = vetCartasEmbaralhadas[posicao];
- }
- if (g_estadoImagem1 != null && g_estadoImagem2 != null) {
- if (g_estadoImagem1 != g_estadoImagem2) {
- setTimeout(mostraImagemOriginal, 1000);
- playFail();
- 
- } else {
- document.getElementById("carta_" + (posicaoImg01 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem1 + ".png')";
- document.getElementById("carta_" + (posicaoImg02 + 1)).style.backgroundImage = "url('imagens/carta_" + g_estadoImagem2 + ".png')";
- g_estadoImagem1 = null;
- g_estadoImagem2 = null;
- playSuccess();
- 
- }
- }
- }
- 
- back*/
-
-
-
 /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
 
 /*alterado*/
@@ -188,12 +151,14 @@ function contaAcertos() {
 }
 
 function finalizaJogo() {
-    var nomeUsuario = prompt("Parabéns, você conclui o jogo! Qual o seu nome?");
+    var nomeUsuario = prompt("Parabéns, você conclui o jogo! Qual o seu nome completo?");
     sessionStorage.setItem('userName', nomeUsuario);
     nome = sessionStorage.getItem('userName');
     alert(nome);
     /*iniciarJogo();*/
     atualizaDados();
+    retornaInicio();
+    novoJogo();
 }
 
 
@@ -204,11 +169,11 @@ function atualizaDados() {
 
 var totalTentativas;
 var nroTentativas = 0;
-function contaTentativas(){
+function contaTentativas() {
     nroTentativas = nroTentativas + 1;
     document.getElementById("tentativas").innerHTML = nroTentativas;
-    /*sessionStorage.setItem('userTentativas', nroTentativas);
-    totalTentativas = sessionStorage.getItem('userTentativas');*/
+    sessionStorage.setItem('userTentativas', nroTentativas);
+    totalTentativas = sessionStorage.getItem('userTentativas');
 }
 
 /*function contaAcertos(){
@@ -219,7 +184,11 @@ function contaTentativas(){
  }
  }*/
 
-
+function retornaInicio(){
+    for (i = 1; i < 20; i++) {
+        document.getElementById("carta_" + i).style.backgroundImage = "url('imagens/carta_0.png')";
+    }
+}
 
 var vetCartasEmbaralhadas = new Array();//vetor com numeros de 0 a 19
 function embaralharCartas() {
