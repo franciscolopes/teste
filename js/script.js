@@ -13,6 +13,7 @@ function novoJogo() {
     document.getElementById("imgLateral").style.opacity = 0;
     setTimeout(mostraImagemLateral, 20000);
     embaralharCartas();
+    nroTentativas = 0;
 }
 
 function incio() {
@@ -58,12 +59,11 @@ function pararCronometro() {
     }
     var logTempo = min + ":" + sec;
     /* armazenamento local= criar função para parar o cronometro e então sim armazenar o tempo*/
-    localStorage.tempo = logTempo;
-    // Retrieve
-    document.getElementById("p2_tempo").innerHTML = localStorage.tempo;
-    //localStorage.removeItem("tempo");
-
+    
+    sessionStorage.setItem('userTempo', logTempo);
+    totalTempo = sessionStorage.getItem('userTempo');
     /*armazenamento local*/
+
 }
 
 function ligaCronometro() {
@@ -142,7 +142,7 @@ function mostraImagemOriginal() {
 var acertos = 0;
 var nome;
 function contaAcertos() {
-    if (acertos < 1) {
+    if (acertos < 9) {
         acertos = acertos + 1;
     } else {
         setTimeout(finalizaJogo, 1000);
@@ -154,17 +154,19 @@ function finalizaJogo() {
     var nomeUsuario = prompt("Parabéns, você conclui o jogo! Qual o seu nome completo?");
     sessionStorage.setItem('userName', nomeUsuario);
     nome = sessionStorage.getItem('userName');
-    alert(nome);
-    /*iniciarJogo();*/
     atualizaDados();
     retornaInicio();
     novoJogo();
+    nroTentativas = 0;
+    
 }
 
 
 function atualizaDados() {
     document.getElementById("nomeUser").innerHTML = nome;
     document.getElementById("tentativasUser").innerHTML = totalTentativas;
+    document.getElementById("p2_tempo").innerHTML = totalTempo;
+    nroTentativas = 0;
 }
 
 var totalTentativas;
@@ -172,17 +174,11 @@ var nroTentativas = 0;
 function contaTentativas() {
     nroTentativas = nroTentativas + 1;
     document.getElementById("tentativas").innerHTML = nroTentativas;
-    sessionStorage.setItem('userTentativas', nroTentativas);
+    var aux = nroTentativas;
+    sessionStorage.setItem('userTentativas', aux);
     totalTentativas = sessionStorage.getItem('userTentativas');
 }
 
-/*function contaAcertos(){
- acertos.splice(0, 1);
- if(acertos.length <= 0){
- nomeUsuario = prompt("Qual o seu nome?");
- alert(nomeUsuario);
- }
- }*/
 
 function retornaInicio(){
     for (i = 1; i < 20; i++) {
