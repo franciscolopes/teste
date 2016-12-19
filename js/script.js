@@ -5,20 +5,13 @@ function iniciarJogo() {
 
 var g_cronometro;
 var g_imgLateral = "";
-function mudarCor(id, cor) {
-    document.getElementById(id).style.backgroundColor = cor;
-}
-function inserirMarcacao(idtxt) {
-    document.getElementById(idtxt).innerHTML = g_marcacao;
-    (g_marcacao === 'X') ? g_marcacao = '0' : g_marcacao = 'X';
-}
+
 
 function novoJogo() {
     pararCronometro();
     ligaCronometro();
     document.getElementById("imgLateral").style.opacity = 0;
     setTimeout(mostraImagemLateral, 20000);
-    setTimeout(mostraImagemPequena, 10000);
     embaralharCartas();
 }
 
@@ -97,27 +90,6 @@ function apagaImg() {
 
 /*chama fantasma grande*/
 
-/*chama fantasma pequeno*/
-function dado() {
-    return parseInt(Math.random() * (800 - 0) + 0 + 0.5);
-}
-
-function mostraImagemPequena() {
-    document.getElementById("id_caixaFP").style.left = dado() + "px";
-    document.getElementById("id_caixaFP").style.right = dado() + "px";
-    document.getElementById("id_caixaFP").style.top = dado() + "px";
-    document.getElementById("imgPequena").style.opacity = 1;
-    setTimeout(apagaImgPequena, 4000);
-}
-
-
-function apagaImgPequena() {
-    document.getElementById("imgPequena").style.opacity = 0;
-    setTimeout(mostraImagemPequena, 10000);
-}
-
-/*chama fantasma pequeno*/
-
 
 /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
 var g_sorteado;
@@ -153,9 +125,11 @@ function trocarCarta(posicao) {
              
         }
     }
-
-
 }
+
+
+
+
 
 function validaPares() {
 
@@ -176,18 +150,15 @@ function embaralharCartas() {
 }
 //delete vetor[i];
 /*---------------------------MOSTRA CARTAS/JOGADA---------------------------*/
-/*---------------------------Executa audios de sucesso e erro---------------------------*/
-
-
-var success = new Audio('audio/success.mp3');
+/*---------------------------Executa audios de sucesso e erro---------------*/
+var success = new Audio('audio/success.wav');
 
 var fail = new Audio('audio/fail.wav');
 
 function playSuccess() {
     success.play();
 }
-
 function playFail() {
     fail.play();
 }
-/*---------------------------Executa audios de sucesso e erro---------------------------*/
+/*---------------------------Executa audios de sucesso e erro---------------*/

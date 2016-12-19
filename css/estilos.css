@@ -1,192 +1,171 @@
-        .caixaTitulo {
-                width: 720px;
-                height: 220px;
-                padding: 1px;
-                border: solid 2px #e0dbdb;
-                position: absolute;
-                top:50%;
-                left:50%;
-                margin-left: -310px;
-                margin-top: -280px;
-                text-align: center;
-                color: black;
-            }
+        
+.conteinerIncio{
+    width: 720px;
+    height: 520px;
+    /*border: solid 2px red;*/
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -310px;
+    margin-top: -280px;
+    text-align: center;
+}
 
-            #linha{
-                padding: 15px;
-                width: 600px;
-                height: 20px;
-            }
 
-           
-            h1{
-                font-size: 400px;
-                color: #e0dbdb ;
-                font-family: 'Creepster', cursive;
-                text-align: center;
-                margin-top: 30px;
-            }
+.caixaTitulo {
+    width: 720px;
+    height: 220px;
+    padding: 1px;
+    border: solid 2px #e0dbdb;
+    display: inline-block; 
+    position: relative;
+    text-align: center;
+}
 
-            label{
-                font-size: 170%;
-            }
-            /*INICIO NOME*/
-            body {
-                font-family: 'Lato', sans-serif;
-                font-size: 30%;
-                text-align: center;  
-                padding: 1em 2em; 
-                margin:0 auto; 
-                font-weight: 700;
-            }
-            /* define the start and end points of the fade in object */
-            @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-            .fade {
-                /* make things invisible first */
-                opacity:0; 		
 
-                /* call the keyframe named fadeIn, use animattion ease-in and repeat 1 time */
-                animation:fadeIn ease-in 1;
-                /* make sure fade-in stops at the last keyframe value (opacity: 1)*/
-                animation-fill-mode:forwards;
-                animation-duration:1s;
-            }
+h1{
+    font-size: 12em;
+    color: #e0dbdb ;
+    font-family: 'Creepster', cursive;
+    text-align: center;
+    margin-top: 30px;
+}
 
-            .fade.pro {
-                animation-delay: 0.7s;
-            }
-            .fade.web {
-                animation-delay: 1.2s;
-            }
-            .fade.type {
-                animation-delay: 2s;
-            } 	
+label{
+    font-size: 170%;
+}
+/*INICIO NOME*/
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 30%;
+    text-align: center;  
+    padding: 1em 2em; 
+    margin:0 auto; 
+    font-weight: 700;
+}
+.memory {
+    color: #CE566A;
+}/*
 
-            h1 {font-size: 5em; 
-                /*margin-top: 2em;*/
-            }	
-            .web {
-                color: #CE566A;
-            }
-            @media only screen and (min-width: 50em) {	
-                h1 {font-size: 12em; /*margin-top: 1em;*/}
-            }
-            /* FIM NOME*/
+/* FIM NOME*/
 
-            /* botão */
-            .buttonJogar {
-                border-radius: 4px;
-                background-color: #3e5776;
-                border: none;
-                color: #FFFFFF;
-                text-align: center;
-                font-size: 28px;
-                padding: 20px;
-                width: 200px;
-                transition: all 0.5s;
-                cursor: pointer;
-                margin: 5px;
-                margin-top: -25px;
-                font-family: 'Lato', sans-serif;            }
+/* botão */
+.buttonJogar {
+    border-radius: 4px;
+    background-color: #3e5776;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: -25px;
+    font-family: 'Lato', sans-serif;            }
 
-            .buttonJogar span {
-                cursor: pointer;
-                display: inline-block;
-                position: relative;
-                transition: 0.5s;
-            }
+.buttonJogar span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
 
-            .buttonJogar span:after {
-                content: '»';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -20px;
-                transition: 0.5s;
-            }
+.buttonJogar span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
 
-            .buttonJogar:hover span {
-                padding-right: 25px;
-            }
+.buttonJogar:hover span {
+    padding-right: 25px;
+}
 
-            .buttonJogar:hover span:after {
-                opacity: 1;
-                right: 0;
-            }
+.buttonJogar:hover span:after {
+    opacity: 1;
+    right: 0;
+}
 
-            /* botão */
-            .caixa1{
-                position: absolute;
-                top:50%;
-                left:50%;
-                margin-left: -430px;
-                margin-top: -10px;
-            }
-            .caixa2{
-                position: absolute;
-                top:50%;
-                left:50%;
-                margin-left: 130px;
-                margin-top: -30px;
-            }
-            .icone1{
-                width: 50px;
-                height: 50px;
-            }
-            .icone2{
-                width: 70px;
-                height: 70px;
-            }
+/* botão */
+.caixa1{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -350px;
+    margin-top: -15px;
+}
+.caixa2{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -350px;
+    margin-top: 100px;
+}
+.icone1{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.icone2{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
 
-            .txtinfo{
-                font-size: 15px;
-                color:white;
-                font-family: 'Lato', sans-serif;
-                margin-left: auto;
-                margin-right: auto;
-                width: 6em
-            }
-            .txtregras{
-                font-size: 15px;
-                color:white;
-                font-family: 'Lato', sans-serif;
-                margin-left: auto;
-                margin-right: auto;
-                width: 6em
-            }
-            .img-with-text {
-                text-align: justify;
-                width: 400px;
-            }
+.txtinfo{
+    font-size: 15px;
+    color:white;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+.txtregras{
+    font-size: 15px;
+    color:white;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+.img-with-text {
+    text-align: justify;
+    width: 705px;
+    
+}
 
-            .img-with-text img {
-                display: block;
-                margin: 0 auto;
-            }
+.img-with-text img {
+    display: block;
+}
 
-            .gif{
-                width:  10%;
-                height: 10%;
-                float: left;
-                position: absolute;
-                margin-left: -34%;/*-465px*/
-                margin-top: 30px;
-            }
+.gif{
+    width:  10%;
+    height: 10%;
+    float: left;
+    position: absolute;
+    margin-left: -34%;/*-465px*/
+    margin-top: 30px;
+}
 
-            .gif2{
-                width:  109px;
-                height: 72px;
-                float: left;
-                position: absolute;
-                margin-left: 41%;
-                margin-top: 38%;
-                /*margin-left: 545px;
-                margin-top: 500px;*/
-            }
+.gif2{
+    width:  109px;
+    height: 72px;
+    float: left;
+    position: absolute;
+    margin-left: 41%;
+    margin-top: 38%;
+    /*margin-left: 545px;
+    margin-top: 500px;*/
+}
 
-            audio{
-                float: right;
-            }
+audio{
+    float: right;
+}
 
 /*----------------------------------------------------------------------------------*/
 
@@ -314,15 +293,7 @@ body{
     background-color: #8EA4CF; /*rgba(255,255,255,0.4);*/
 
 }
-/*p{
-   margin: 0px;
-   font-weight: bold;
-   color: black;
-   font-size: 160px;
-   text-align: center;
-   font-family: verdana;
-    
-}*/
+
 #menu{
     position: absolute;
     background-color: white;
@@ -380,69 +351,52 @@ hr{
     height: 100px;
     position: relative;
     /* animation: mymove 5s infinite;*/
-    animation: fly 20s infinite;
+    animation: voar 20s infinite;
     margin-top: 15%;
 }
 /* Standard syntax */
-@keyframes fly {
+@keyframes voar {
     0% {
         transform: scaleX(-1);
         left: -10%;
-        /*top: 0;*/
     }
     10% {
         left: 5%;
-        /*top: 5px;*/
     }
     20% {
         left: 15%;
-        /*top: 10px;*/
     }
     30% {
         left: 40%;
-        /*top: 0;*/
     }
     40% {
         left:70%;
-        /*top: 30px;*/
     }
     50% {
         left: 110%;
         transform: scaleX(-1);
-        /*top: 50px;*/
     }
     51% {
         transform: scaleX(1);
     }
     60% {
         left: 70%;
-        /*top: 0px;*/
     }
     70% {
         left: 50%;
-        /*top: 30px;*/
     }
     80% {
         left: 20%;
-        /*top: 20px;*/
     }
     90% {
         left: 10%;
-        /*top: 5px;*/
     }
     100% {
         left: -10%;
-        /*top: 0;*/
         transform: scaleX(1);
     }
 }
 
-/* @keyframes mymove {
-     0%   {left: 0px;}
-     25%  {left: 200px;}
-     75%  {left: 50px}
-     100% {left: 100px;}
- }*/
 /*fantasma*/
 /*fantasma grande*/
 .caixaFG{
@@ -471,16 +425,7 @@ hr{
     position: absolute;
     border: 2px solid red;
 }
-.f2{
-    width: 300px;
-    height: 120px;
-    border: none;
-    opacity: 0;
-    -webkit-transition: opacity 3s; 
-    -o-transition: opacity 3s;
-    transition: opacity 3s;
-}
-/*fantasma pequeno*/
+
 .menu2{
     text-align: center;
     color: white;

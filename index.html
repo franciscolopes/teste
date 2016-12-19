@@ -12,31 +12,33 @@
     <body>
         <img src="imagens/bat_1.gif" class="gif" alt=""/>
         <img src="imagens/gato.gif" class="gif2" alt=""/>
-        <div class="caixaTitulo">
-            <h1><span class="fade pro">HALLOWEEN</span><span class="fade web">MEMORY</span><span class="fade type">CHALLENGE</span></h1>
-            <button class="buttonJogar" onclick="iniciarJogo();"><span>JOGAR </span></button>
-        </div>
-        <div class="img-with-text caixa1">
-            <img  class="icone1" src="imagens/info.png" alt=""/>
-            <span class="txtinfo">
-                Projeto Final desenvolvido como requisito parcial para conclusão 
-                da disciplina Fundamentos de Web Design II, 
-                do curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação,
-                Ciência e Tecnologia do Triângulo Mineiro. Aluno: Francisco Lopes da Cunha. Professor: Wilton de Paula Filho.
-            </span>
-        </div>
-        <div class="img-with-text caixa2">
-            <img  class="icone2" src="imagens/regras.png" alt=""/>
-            <span class="txtregras">
-                Este é um jogo da memória, formado por 20 cartas, em que cada uma apresenta uma figura em um dos lados. 
-                Cada figura se repete em duas cartas diferentes.  
-                No início do jogo, o tabuleiro mostra as cartas com as figuras voltadas para baixo.
-                Clique em uma carta para virá-la, comece virando duas cartas.
-                Caso as figuras sejam iguais, você ganha esse par e joga novamente. 
-                Se forem cartas diferentes, estas cartas são desviradas, e você deve tentar outra vez. 
-                O jogo possui um cronomêtro, que marca o tempo que cada jogador leva para 
-                encontrar todos os pares. Para começar o jogo, clique no botão JOGAR
-            </span>
+        <div class="conteinerIncio">
+            <div class="caixaTitulo">
+                <h1><span>HALLOWEEN</span><span class="memory">MEMORY</span><span>CHALLENGE</span></h1>
+                <button class="buttonJogar" onclick="iniciarJogo();"><span>JOGAR </span></button>
+            </div>
+            <div class="img-with-text caixa1">
+                <img  class="icone1" src="imagens/info.png" alt=""/>
+                <span class="txtinfo">
+                    Projeto Final desenvolvido como requisito parcial para conclusão 
+                    da disciplina Fundamentos de Web Design II, 
+                    do curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação,
+                    Ciência e Tecnologia do Triângulo Mineiro. Aluno: Francisco Lopes da Cunha. Professor: Wilton de Paula Filho.
+                </span>
+            </div>
+            <div class="img-with-text caixa2">
+                <img  class="icone2" src="imagens/regras.png" alt=""/>
+                <span class="txtregras">
+                    Este é um jogo da memória, formado por 20 cartas, em que cada uma apresenta uma figura em um dos lados. 
+                    Cada figura se repete em duas cartas diferentes.  
+                    No início do jogo, o tabuleiro mostra as cartas com as figuras voltadas para baixo.
+                    Clique em uma carta para virá-la, comece virando duas cartas.
+                    Caso as figuras sejam iguais, você ganha esse par e joga novamente. 
+                    Se forem cartas diferentes, estas cartas são desviradas e você deve tentar outra vez. 
+                    O jogo possui um cronomêtro, que marca o tempo que cada jogador leva para 
+                    encontrar todos os pares. Para começar o jogo, clique no botão JOGAR
+                </span>
+            </div>  
         </div>
         <audio  loop autoplay>
             <source src="audio/musica.mp3" type="audio/mpeg">
